@@ -69,7 +69,7 @@ export function useTimer() {
       intervalRef.current = window.setInterval(handleTick, 1000);
     }
     return clearTimer;
-  }, [status, clearTimer, handleTick]);
+  }, [status, mode, clearTimer, handleTick]);
 
   useEffect(() => {
     return clearTimer;

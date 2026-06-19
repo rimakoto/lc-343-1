@@ -65,7 +65,10 @@ export const usePomodoroStore = create<PomodoroState>((set, get) => ({
 
   completePomodoro: () => {
     const { mode } = get();
-    const newCount = incrementTodayCompleted();
+    let newCount = getTodayCompleted();
+    if (mode === 'focus') {
+      newCount = incrementTodayCompleted();
+    }
     const nextMode: TimerMode = mode === 'focus' ? 'break' : 'focus';
     const newConfig = get().config;
     set({
